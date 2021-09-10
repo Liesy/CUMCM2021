@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import matplotlib as plt
+import matplotlib.pyplot as plt
 
 
 def dataprocess():
@@ -16,9 +16,9 @@ def dataprocess():
     for index, _ in df_accessory_1.iterrows():
         if pd.isnull(df_accessory_1.iloc[index, 0]):
             df_accessory_1.iloc[index, 0] = df_accessory_1.iloc[saved_index, 0]
-            df_accessory_1.iloc[index, 1] = df_accessory_1.iloc[saved_index, 1]
         else:
             saved_index = index
+    df_accessory_1.drop(df_accessory_1.columns[[1]], axis=1, inplace=True)
 
     # 处理附件2
     df_accessory_2.drop(labels=0, axis=0, inplace=True)
@@ -32,7 +32,7 @@ def dataprocess():
     df_accessory_2.rename(columns=columns, inplace=True)
 
     # 处理两附件的数据类型
-    df_accessory_1.iloc[:, 2:] = df_accessory_1.iloc[:, 2:].astype(np.float64)
+    df_accessory_1.iloc[:, 1:] = df_accessory_1.iloc[:, 1:].astype(np.float64)
     df_accessory_2 = df_accessory_2.astype(np.float64)
 
     df_accessory_1.to_csv('./accessory1.csv', sep=',',
