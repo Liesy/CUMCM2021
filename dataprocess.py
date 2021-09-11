@@ -3,7 +3,7 @@ import numpy as np
 import matplotlib.pyplot as plt
 
 
-def dataprocess():
+def question1_dataprocess():
     """
     - process datasets from accessories
     - xlsx --> csv
@@ -19,7 +19,6 @@ def dataprocess():
         else:
             saved_index = index
     df_accessory_1.drop(df_accessory_1.columns[[1]], axis=1, inplace=True)
-    df_accessory_1['温度'] = df_accessory_1['温度'].map(lambda x: x / 100)
 
     # 处理附件2
     df_accessory_2.drop(labels=0, axis=0, inplace=True)
@@ -39,4 +38,25 @@ def dataprocess():
     df_accessory_1.to_csv('D:/mathematical_modeling/program/accessory1.csv', sep=',',
                           header=True, index=False, encoding='utf_8_sig')
     df_accessory_2.to_csv('D:/mathematical_modeling/program/accessory2.csv', sep=',',
+                          header=True, index=False, encoding='utf_8_sig')
+
+
+def question2_dataprocess():
+    """
+    - process datasets for question2
+    - csv --> csv
+    """
+    df = pd.read_excel("D:/mathematical_modeling/2021/B/1.xlsx")
+
+    saved_index = 0
+    for index, _ in df.iterrows():
+        if pd.isnull(df.iloc[index, 0]):
+            df.iloc[index, 1] = df.iloc[saved_index, 1]
+        else:
+            saved_index = index
+
+    df.drop(df.columns[[0]], axis=1, inplace=True)
+    df.iloc[:, 1:] = df.iloc[:, 1:].astype(np.float64)
+
+    df.to_csv('D:/mathematical_modeling/program/accessory3.csv', sep=',',
                           header=True, index=False, encoding='utf_8_sig')
