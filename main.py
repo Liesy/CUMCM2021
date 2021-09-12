@@ -23,6 +23,9 @@ def main():
     mod.model_regTree3_2_1()
     mod.model_regTree3_2_2()
 
+    fig.question4_A_figures()
+    fig.question4_B_figures()
+
 
 if __name__ == '__main__':
     main()

@@ -119,3 +119,74 @@ class figures(object):
         fig.show()
         saved_path = 'D:/mathematical_modeling/program/figure/use.png'
         fig.savefig(saved_path, dpi=600, bbox_inches='tight')
+
+
+    def question4_A_figures(self):
+        x = [['10','25','33','50','67','75','100','200'],
+            ['0','0.5','1','2'],
+            ['0.5','1','2','5'],
+            ['0.3','0.9','1.68','2.1']]
+
+        y_A = [[0,0,5,30,5,0,0,34],
+            [5,5,59,5],
+            [6,47,11,10],
+            [11,12,41,10]]
+
+        plt.style.use('fivethirtyeight')
+        plt.rcParams['font.sans-serif'] = 'simhei'
+        plt.rcParams['axes.unicode_minus'] = False  # 设置中文编码和符号的正常显示
+        width = 0.5
+        color_list = ["#2FBF20", "#1F8F9F", "#005FFF", "#905FFF",
+                    "#DF00B0", "#FF5020", "#FF8F20", "#FFCF20"]
+
+        for idx in range(4):
+            fig = plt.figure()
+
+            for col in range(len(x[idx])):
+                plt.bar(x[idx][col], y_A[idx][col], color=color_list[-col], width=width)
+
+            plt.xlabel(self.df_A.columns[idx]+'取值')
+            plt.ylabel('频数')
+            fig = plt.gcf()
+            fig.show()
+            saved_path = 'D:/mathematical_modeling/program/figure/4_A' + str(idx) + '.png'
+            fig.savefig(saved_path, dpi=600, bbox_inches='tight')
+
+
+    def question4_B_figures(self):
+        x = [['10','25','33','50','67','75','100','200'],
+            ['0','0.5','1','2'],
+            ['0.5','1','2','5'],
+            ['0.3','0.9','1.68','2.1']]
+
+        y_B = [[6,6,0,11,0,6,11,0],
+            [0,0,40,0],
+            [0,40,0,0],
+            [0,6,28,6]]
+
+        plt.style.use('fivethirtyeight')
+        plt.rcParams['font.sans-serif'] = 'simhei'
+        plt.rcParams['axes.unicode_minus'] = False  # 设置中文编码和符号的正常显示
+        width = 0.5
+        color_list = ["#2FBF20", "#1F8F9F", "#005FFF", "#905FFF",
+                    "#DF00B0", "#FF5020", "#FF8F20", "#FFCF20"]
+
+        plt.style.use('fivethirtyeight')
+        plt.rcParams['font.sans-serif'] = 'simhei'
+        plt.rcParams['axes.unicode_minus'] = False  # 设置中文编码和符号的正常显示
+        width = 0.5
+        color_list = ["#2FBF20", "#1F8F9F", "#005FFF", "#905FFF",
+                    "#DF00B0", "#FF5020", "#FF8F20", "#FFCF20"]
+
+        for idx in range(4):
+            fig = plt.figure()
+
+            for col in range(len(x[idx])):
+                plt.bar(x[idx][col], y_B[idx][col], color=color_list[-col], width=width)
+
+            plt.xlabel(self.df_B.columns[idx]+'取值')
+            plt.ylabel('频数')
+            fig = plt.gcf()
+            fig.show()
+            saved_path = 'D:/mathematical_modeling/program/figure/4_B' + str(idx) + '.png'
+            fig.savefig(saved_path, dpi=600, bbox_inches='tight')
